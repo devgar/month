@@ -28,12 +28,11 @@ h1 {
 #resource #columns {
   font-size: 10px;
   display: flex;
-  padding: 0 24px;
   justify-content: space-between;
 }
 
 #resource #columns > div > div {
-  margin: 0 0 12px;
+  margin: 0 0 4px;
 }
 
 #resource #columns > div > div > * {
@@ -62,7 +61,6 @@ h1 {
 }
 
 #resource #table tr {
-  margin: 1px 0;
   background: #EEE;
   text-align: center;
   font-family: monospace;
@@ -80,11 +78,22 @@ h1 {
 }
 
 #resource #table tr td {
-  height: 38px;
+  height: 32px;
+  color: #DDD;
+}
+#resource #table tr td:first-child {
+  color: black !important;
 }
 
 #resource #table tr.black td{
+  color: black;
   height: 5px;
+}
+#resource #table tr.black td:first-child {
+  color: #CCC !important;
+}
+#resource #table tr.dark td{
+  color: #CCC;
 }
 
 @media print {
@@ -141,8 +150,11 @@ h1 {
       {#each monthArray() as day}
       <tr class:dark="{day.dark}" class:black="{day.end}">
         <td>{day.i}</td>
-        {#each new Array(8) as i}
-        <td></td>
+        {#each new Array(2) as i}
+        <td>ENTRADA</td>
+        <td>FIRMA</td>
+        <td>SALIDA</td>
+        <td>FIRMA</td>
         {/each}
       </tr>
       {/each}
