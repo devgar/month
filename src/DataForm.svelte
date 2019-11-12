@@ -1,6 +1,8 @@
 <script>
-export let company = '…', worker = '…', generate = false
-export let ccc = '…', nif = '…', boss = '…', obs = '…'
+export let company = "", worker = "", generate = false
+export let ccc = "", nif = "", boss = "", obs = ""
+
+$: show = !company || !worker || !ccc || !nif || !boss && generate
 </script>
 
 <style>
@@ -17,14 +19,24 @@ export let ccc = '…', nif = '…', boss = '…', obs = '…'
     height: 100vh;
   }
   form input, form textarea {
-    width: 100%;
+    width: calc(100% + 4px);
+    border-left: none;
+    margin-left: -4px;
+    box-sizing: border-box;
+    resize: vertical;  
+  }
+  form input:focus, form textarea:focus {
+    outline: none;
+    transition: 0.3s;
+    background: #EEE;
+    padding: 0.4em 0.2em 0.4em 0.6em;
   }
   form button {
     float: right;
   }
 </style>
 
-{#if !generate}
+{#if show}
 <div id="outerForm">
   <form on:submit>
     <input type="hidden" value="true" name="generate" />

@@ -17,5 +17,9 @@
 	$: query = parseQuery(window.location.search)
 </script>
 
+<svelte:head>
+	<title>Hoja de registro de trabajadores</title>
+</svelte:head>
+
 <DataForm {...query}/>
 <ResultTable {...query} />

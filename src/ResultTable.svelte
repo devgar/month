@@ -1,6 +1,6 @@
 <script>
-export let company = '…', worker = '…', generate = false
-export let ccc = '…', nif = '…', boss = '…', obs = '…'
+export let company = "", worker = "", generate = false
+export let ccc = "", nif = "", boss = "", obs = ""
 const months = ['ENERO', 'FEBRERO', 'MARZO', 'ABRIL', 'MAYO', 'JUNIO', 'JULIO', 'AGOSTO', 'SEPTIEMBRE', 'OCTUBRE', 'NOVIEMBRE', 'DICIEMBRE']
 const TODAY = new Date()
 
@@ -32,7 +32,7 @@ h1 {
 }
 
 #resource #columns > div > div {
-  margin: 0 0 4px;
+  margin: 0 0 2px;
 }
 
 #resource #columns > div > div > * {
@@ -51,13 +51,6 @@ h1 {
 
 #resource thead th {
   font-size: 60%;
-  width: 16%;
-}
-#resource thead th:nth-child(2n) {
-  width: 10%;
-}
-#resource thead th:first-child {
-  width: auto;
 }
 
 #resource #table tr {
@@ -80,9 +73,15 @@ h1 {
 #resource #table tr td {
   height: 32px;
   color: #DDD;
+  width: 16%;
 }
 #resource #table tr td:first-child {
   color: black !important;
+  width: auto;
+}
+
+#resource #table tr td:nth-child(2n) {
+  width: 9%;
 }
 
 #resource #table tr.black td{
@@ -108,12 +107,24 @@ h1 {
   <h1>Registro de Jornada de los Trabajadores</h1>
   <div style="display: flex;">
     <form style="margin-right: 8px;">
+      {#if company}
       <input type="hidden" name="company" value="{company}">
+      {/if}
+      {#if worker}
       <input type="hidden" name="worker" value="{worker}">
+      {/if}
+      {#if ccc}
       <input type="hidden" name="ccc" value="{ccc}">
+      {/if}
+      {#if nif}
       <input type="hidden" name="nif" value="{nif}">
+      {/if}
+      {#if boss}
       <input type="hidden" name="boss" value="{boss}">
+      {/if}
+      {#if obs}
       <input type="hidden" name="obs" value="{obs}">
+      {/if}
       <button>Formulario</button>
     </form>
     <button on:click="{e=>window.print()}">Imprimir</button>
@@ -136,27 +147,28 @@ h1 {
     <thead>
       <tr>
         <th>DIA</th>
-        <th>ENTRADA</th>
-        <th>FIRMA</th>
-        <th>SALIDA</th>
-        <th>FIRMA</th>
-        <th>ENTRADA</th>
-        <th>FIRMA</th>
-        <th>SALIDA</th>
-        <th>FIRMA</th>
+        <th colspan="2">ENTRADA</th>
+        <th colspan="2">SALIDA</th>
+        <th colspan="2">ENTRADA</th>
+        <th colspan="2">SALIDA</th>
+
       </tr>
     </thead>
     <tbody id="table">
       {#each monthArray() as day}
-      <tr class:dark="{day.dark}" class:black="{day.end}">
+      {#if day.end}
+      <tr class="black"><td>{day.i}</td><td colspan="8"></td></tr>
+      {:else}
+      <tr class:dark="{day.dark}">
         <td>{day.i}</td>
         {#each new Array(2) as i}
-        <td>ENTRADA</td>
+        <td>HH:MM</td>
         <td>FIRMA</td>
-        <td>SALIDA</td>
+        <td>HH:MM</td>
         <td>FIRMA</td>
         {/each}
       </tr>
+      {/if}
       {/each}
     </tbody>
   </table>
