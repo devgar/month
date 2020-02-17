@@ -140,7 +140,7 @@ h1 {
       <div><b>C.C.C. Nº</b> <span>{ccc}</span></div>
       <div><b>N.I.F.</b> <span>{nif}</span></div>
       <div><b>MES</b> <span>{months[TODAY.getMonth()]}</span></div>
-      <div><b>AÑO</b> <span>2019</span></div>
+      <div><b>AÑO</b> <span>{TODAY.getFullYear()}</span></div>
     </div>
   </div>
   <table>
@@ -184,7 +184,7 @@ h1 {
       <div style="min-height:1em;"></div>
       <div style="min-height:1em;"></div>
       <div style="min-height:1em;"></div>
-      <div><span>Fdo: {boss}</span> <span>2019</span></div>
+      <div><span>Fdo: {boss}</span> <span>2020</span></div>
     </div>
   </div>
 </div>
