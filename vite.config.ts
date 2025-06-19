@@ -5,6 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [sveltekit()],
 	test: {
+		includeSource: ['src/**/*.{js,ts}'],
 		projects: [
 			{
 				extends: './vite.config.ts',
@@ -28,5 +29,8 @@ export default defineConfig({
 				}
 			}
 		]
-	}
+	},
+	define: {
+		  'import.meta.vitest': 'undefined' // to avoid errors in production build
+	},
 });
