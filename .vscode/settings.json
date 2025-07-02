@@ -1,0 +1,10 @@
+{
+        "explorer.fileNesting.enabled": true,
+        "explorer.fileNesting.patterns": {
+        "Dockerfile": "Dockerfile.*",
+        ".env": ".env.*",
+        "vite.config.ts": "vite.config.*.ts, vitest.config.*.ts, vitest.config.ts",
+        "package.json": "README.md, package-lock.json, yarn.lock, pnpm-lock.yaml, bun.lockb, bun.lock tsconfig.*.json",
+        "*.svelte": "$(capture).svelte.*, $(capture).*.ts, $(capture).*.svelte",
+    }, 
+}
