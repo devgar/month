@@ -7,10 +7,30 @@ const disabled = $derived(stamp_entries >= 4);
 const onclick = () => { stamp_entries++; };
 </script>
 
-<h1>Month<sub>v2</sub></h1>
-<button {onclick} {disabled}>
-    + 1 day
-</button>
+<style>
+header {
+    position: sticky;
+    top: 0;
+    display: flex;
+    align-items: center;
+}
+
+header h1 {
+    flex-grow: 1;
+}
+
+header button {
+    font-size: 1.2em;
+    height: max-content;
+}
+</style>
+
+<header>
+    <h1>Month<sub>v2</sub></h1>
+    <button {onclick} {disabled}>
+        {disabled ? 'Max reached' : 'Add stamp'}
+    </button>
+</header>
 
 <Table {stamp_entries} />
 
