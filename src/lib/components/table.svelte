@@ -1,11 +1,9 @@
 <script>
 import { genMonthDays } from "$lib/month";
 
-import Row from './row.svelte'
-import NonWorkingRow from './row.non-working.svelte';
+import BaseRow from './row.base.svelte'
 
 let { stamp_entries = 2 } = $props();
-
 const monthDays = Array.from(genMonthDays());
 
 $effect(() => {
@@ -19,29 +17,23 @@ table {
     border-collapse: collapse;
     text-align: center;
 }
-table thead tr th:first-child {
-    width: 40px;
-}
 </style>
 
 <table>
     <thead>
-        <tr>
-            <th>Day</th>
-            {#each Array(stamp_entries) }
-                <th>Entrada</th>
-                <th>Salida</th>
-            {/each}
-        </tr>
+        <BaseRow header {stamp_entries} />
+        <!-- <HeaderRow {stamp_entries} /> -->
     </thead>
     <tbody>
         {#each monthDays as {i, weekend}}
             {#if weekend}
                 {#if (i % 2 === 1)}
-                    <NonWorkingRow stamp_entries={stamp_entries} day_kind="weekend" />
+                    <BaseRow {stamp_entries} classes="weekend small" placeholder="Weekend" />
+                    <!-- <WeekendRow {stamp_entries} /> -->
                 {/if}
             {:else}
-                <Row {i} {stamp_entries} {weekend} holiday={false} entries={[]} />
+                <BaseRow {i} {stamp_entries} />
+                <!-- <WeekRow {i} {stamp_entries} /> -->
             {/if}
         {/each}
     </tbody>
