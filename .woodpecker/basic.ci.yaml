@@ -3,13 +3,11 @@ when:
     branch: ci
 
 steps:
-  - name: build
-    image: debian
+  - name: test
+    image: marcaureln/volta:latest
     commands:
-      - echo "This is the build step"
-      - echo "binary-data-123" > executable
-  - name: a-test-step
-    image: golang:1.16
-    commands:
-      - echo "Testing ..."
-      - ./executable
+      - volta install node@24 pnpm@10
+      - pnpm i
+      - pnpm exec playwright install
+      - pnpm test
+      - pnpm build
