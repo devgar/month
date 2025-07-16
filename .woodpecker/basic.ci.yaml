@@ -4,7 +4,7 @@ when:
 
 steps:
   - name: test
-    image: mcr.microsoft.com/playwright:v1.45.0-jammy # Use the official Playwright image
+    image: mcr.microsoft.com/playwright:latest # Use the official Playwright image
     commands:
       # The image has Node.js, so we just need to install pnpm
       - npm i -g pnpm@10
