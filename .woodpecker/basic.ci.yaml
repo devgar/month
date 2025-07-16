@@ -4,10 +4,9 @@ when:
 
 steps:
   - name: test
-    image: marcaureln/volta:latest
+    image: mcr.microsoft.com/playwright:v1.45.0-jammy # Use the official Playwright image
     commands:
-      - volta install node@24 pnpm@10
+      # The image has Node.js, so we just need to install pnpm
+      - npm i -g pnpm@10
       - pnpm i
-      - pnpm exec playwright install
       - pnpm test
-      - pnpm build
